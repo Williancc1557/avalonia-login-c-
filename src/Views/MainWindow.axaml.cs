@@ -17,23 +17,25 @@ public partial class MainWindow : Window
     public void Handle(object sender, RoutedEventArgs e)
     {
         try {
+            string? nameText = name.Text;
             string? emailText = email.Text;
             string? passwordText = password.Text;
 
-            if (string.IsNullOrEmpty(emailText) || string.IsNullOrEmpty(passwordText)) return;
+            bool existsAllFields = string.IsNullOrEmpty(nameText) || string.IsNullOrEmpty(emailText) || string.IsNullOrEmpty(passwordText);
+            if (existsAllFields) return;
 
-            User user = new(emailText, passwordText);
+            User user = new(nameText!, emailText!, passwordText!);
             MainWindowViewModel.AddNewUser(user);
 
             successLabel.Text = $"Registrado com sucesso utilizando o email {user}";
             successLabel.IsVisible = true;
             errorLabel.IsVisible = false;
+        } catch (InvalidNameError nameError) {
+            HandleError("The name is not valid", nameError);
         } catch (InvalidEmailError emailError) {
             HandleError("The email address is not valid", emailError);
         } catch (InvalidPasswordError passwordError) {
             HandleError("The password is not valid", passwordError);
-        } catch (InvalidNameError nameError) {
-            HandleError("The name is not valid", nameError);
         }
     }
 

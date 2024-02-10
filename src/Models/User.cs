@@ -4,10 +4,12 @@ namespace UserAccount {
     public class User {
         private readonly string _email;
         private readonly string _password;
+        private readonly string _name;
 
-        public User(string email, string password) {
+        public User(string name, string email, string password) {
             _email = email;
             _password = password;
+            _name = name;
         }
 
         public string GetToString()
@@ -27,6 +29,10 @@ namespace UserAccount {
 
         public string GetPassword() {
             return _password;
+        }
+
+        public string GetName() {
+            return _name;
         }
     }
 }

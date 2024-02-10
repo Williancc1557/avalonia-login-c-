@@ -26,7 +26,7 @@
         <TextBlock HorizontalAlignment="Center" Classes="Title" Margin="0 0 0 20">
             Registrar
         </TextBlock>
-        <TextBox x:Name="name" Watermark="Password" Margin="0 0 0 20"/>
+        <TextBox x:Name="name" Watermark="Name" Margin="0 0 0 20"/>
         <TextBox x:Name="email" Watermark="Email" Margin="0 0 0 20"/>
         <TextBox x:Name="password" Watermark="Password" Margin="0 0 0 20"/>
         <Button Click="Handle"

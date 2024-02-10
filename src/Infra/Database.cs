@@ -4,7 +4,7 @@ using UserAccount;
 
 public class Database {
     private static Database? instance;
-    private List<User> users = new();
+    private readonly List<User> users = [];
 
 
     public static Database CreateInstance() {
@@ -24,7 +24,7 @@ public class Database {
         if (!Validator.ValidatePassword(user.GetPassword()))
             throw new InvalidPasswordError("Invalid password");
 
-        if (!Validator.ValidateName(user.GetEmail()))
+        if (!Validator.ValidateName(user.GetName()))
             throw new InvalidNameError("Invalid name");
     }
 }
