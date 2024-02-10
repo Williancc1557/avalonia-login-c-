@@ -22,7 +22,10 @@
         <FluentTheme />
         <StyleInclude Source="avares://Avalonia.Controls.DataGrid/Themes/Fluent.xaml"/> 
     </Window.Styles>
-    <DockPanel>
+    <DockPanel
+        HorizontalAlignment="Center"
+        VerticalAlignment="Center"
+    >
         <StackPanel HorizontalAlignment="Center"
                     VerticalAlignment="Center"
                     MinWidth="400" DockPanel.Dock="Left">
@@ -33,20 +36,31 @@
             <TextBox x:Name="email" Watermark="Email" Margin="0 0 0 20"/>
             <TextBox x:Name="password" Watermark="Password" Margin="0 0 0 20"/>
             <Button Click="Handle"
-                    Width="200" VerticalContentAlignment="Center"
                     HorizontalAlignment="Center"
-                    HorizontalContentAlignment="Center">
+
+                    Padding="100 10 100 10" VerticalContentAlignment="Center"
+                    >
                     Sign up
             </Button>
             <TextBlock x:Name="successLabel" HorizontalAlignment="Center" Foreground="Green" Classes="successLabel" Margin="0 30 0 0" IsVisible="False" ></TextBlock>
             <TextBlock x:Name="errorLabel" HorizontalAlignment="Center" Foreground="Red" Classes="errorLabel" Margin="0 30 0 0" IsVisible="False" ></TextBlock>
         </StackPanel>
-        <StackPanel DockPanel.Dock="Right" MinWidth="300" MaxWidth="800">
+        <StackPanel HorizontalAlignment="Center" DockPanel.Dock="Right" MinWidth="300" MaxWidth="800">
             <DataGrid Margin="20" ItemsSource="{Binding Users}"
-                AutoGenerateColumns="True" IsReadOnly="True"
-                GridLinesVisibility="All"
-                CanUserSortColumns="True"
-                BorderThickness="1" BorderBrush="Gray">
+                    IsReadOnly="True"
+                    CanUserReorderColumns="True"
+                    CanUserResizeColumns="True"
+                    CanUserSortColumns="True"
+                    GridLinesVisibility="All"
+                    BorderThickness="1" BorderBrush="Gray"
+                    MinHeight="400"
+                    MaxWidth="700"
+                    MaxHeight="500">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="First Name"  Binding="{Binding Name}"/>
+                    <DataGridTextColumn Header="Last Name" Binding="{Binding Email}" />
+                    <DataGridTextColumn Header="Password" Binding="{Binding Password}" />
+                </DataGrid.Columns>
             </DataGrid>
         </StackPanel>
     </DockPanel>

@@ -27,7 +27,7 @@ public partial class MainWindow : Window
             User user = new(nameText!, emailText!, passwordText!);
             MainWindowViewModel.AddNewUser(user);
 
-            successLabel.Text = $"Congratulations! You've successfully signed up. Welcome to our community {user.GetName()}";
+            successLabel.Text = $"Congratulations! You've successfully signed up. Welcome to our community {user.Name}";
             successLabel.IsVisible = true;
             errorLabel.IsVisible = false;
         } catch (InvalidNameError nameError) {

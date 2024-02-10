@@ -1,10 +1,11 @@
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using CustomizedErrors;
 using UserAccount;
 
 public class Database {
     private static Database? instance;
-    private readonly List<User> users = [];
+    private readonly ObservableCollection<User> users = [];
 
     public static Database CreateInstance() {
         instance ??= new Database();
@@ -17,17 +18,17 @@ public class Database {
     }
 
     private void Validators(User user) {
-        if (!Validator.ValidateEmail(user.GetEmail()))
+        if (!Validator.ValidateEmail(user.Email))
             throw new InvalidEmailError("Invalid email address");
 
-        if (!Validator.ValidatePassword(user.GetPassword()))
+        if (!Validator.ValidatePassword(user.Password))
             throw new InvalidPasswordError("Invalid password");
 
-        if (!Validator.ValidateName(user.GetName()))
+        if (!Validator.ValidateName(user.Password))
             throw new InvalidNameError("Invalid name");
     }
 
-    public List<User> GetUsers() {
+    public ObservableCollection<User> GetUsers() {
         return users;
     }
 }
