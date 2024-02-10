@@ -26,4 +26,8 @@ public class Database {
         if (!Validator.ValidateName(user.GetName()))
             throw new InvalidNameError("Invalid name");
     }
+
+    public List<User> GetUsers() {
+        return users;
+    }
 }

@@ -10,9 +10,10 @@ public partial class FormWindow : Window
     public FormWindow()
     {
         InitializeComponent();
+        LoadData();
     }
 
-    public void Handle(object sender, RoutedEventArgs e) {
-        
+    public void LoadData() {
+
     }
 }
