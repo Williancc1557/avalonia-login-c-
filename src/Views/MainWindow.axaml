@@ -28,7 +28,7 @@
     >
         <StackPanel HorizontalAlignment="Center"
                     VerticalAlignment="Center"
-                    MinWidth="400" 
+                    MinWidth="400"
                     DockPanel.Dock="Left"
                     MaxWidth="500">
             <TextBlock HorizontalAlignment="Center" Classes="Title" Margin="0 0 0 20">
@@ -36,7 +36,7 @@
             </TextBlock>
             <TextBox x:Name="name" Watermark="Name" Margin="0 0 0 20"/>
             <TextBox x:Name="email" Watermark="Email" Margin="0 0 0 20"/>
-            <TextBox x:Name="password" Watermark="Password" Margin="0 0 0 20"/>
+            <TextBox PasswordChar="*" x:Name="password" Watermark="Password" Margin="0 0 0 20"/>
             <Button Click="Handle"
                     HorizontalAlignment="Center"
 
@@ -56,6 +56,7 @@
                     GridLinesVisibility="All"
                     BorderThickness="1" BorderBrush="Gray"
                     MinHeight="400"
+                    MinWidth="600"
                     MaxWidth="700"
                     MaxHeight="500">
                 <DataGrid.Columns>
@@ -64,6 +65,7 @@
                     <DataGridTextColumn Header="Password" MinWidth="200" Binding="{Binding Password}" />
                 </DataGrid.Columns>
             </DataGrid>
+            <TextBox MaxWidth="600" KeyUp="FilterTextUpdate" x:Name="filterByEmail" Watermark="Filter by email" Margin="0 0 0 20"/>
         </StackPanel>
     </DockPanel>
 </Window>

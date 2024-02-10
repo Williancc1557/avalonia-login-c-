@@ -1,6 +1,7 @@
 using System;
 using Assignment3.ViewModels;
 using Avalonia.Controls;
+using Avalonia.Input;
 using Avalonia.Interactivity;
 using CustomizedErrors;
 using UserAccount;
@@ -44,5 +45,9 @@ public partial class MainWindow : Window
         errorLabel.IsVisible = true;
         successLabel.IsVisible = false;
         Console.WriteLine(exception.Message);
+    }
+
+    private void FilterTextUpdate(object sender, KeyEventArgs e) {
+        Console.WriteLine(e);
     }
 }
