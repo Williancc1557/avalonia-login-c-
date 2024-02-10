@@ -6,7 +6,6 @@ public class Database {
     private static Database? instance;
     private readonly List<User> users = [];
 
-
     public static Database CreateInstance() {
         instance ??= new Database();
         return instance;
