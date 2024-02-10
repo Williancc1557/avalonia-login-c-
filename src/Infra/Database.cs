@@ -12,7 +12,7 @@ public class Database {
         return instance;
     }
 
-    private void SaveUser(User user) {
+    public void SaveUser(User user) {
         Validators(user);
         users.Add(user);
     }

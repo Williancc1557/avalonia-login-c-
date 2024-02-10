@@ -26,14 +26,16 @@
         <TextBlock HorizontalAlignment="Center" Classes="Title" Margin="0 0 0 20">
             Registrar
         </TextBlock>
+        <TextBox x:Name="name" Watermark="Password" Margin="0 0 0 20"/>
         <TextBox x:Name="email" Watermark="Email" Margin="0 0 0 20"/>
         <TextBox x:Name="password" Watermark="Password" Margin="0 0 0 20"/>
-        <Button Click="GreetingButtonClickHandler"
+        <Button Click="Handle"
                 Width="200" VerticalContentAlignment="Center"
                 HorizontalAlignment="Center"
                 HorizontalContentAlignment="Center">
                 Sign up
         </Button>
-        <TextBlock x:Name="successLabel" HorizontalAlignment="Center" Classes="successLabel" Margin="0 30 0 0" IsVisible="False" ></TextBlock>
+        <TextBlock x:Name="successLabel" HorizontalAlignment="Center" Foreground="Green" Classes="successLabel" Margin="0 30 0 0" IsVisible="False" ></TextBlock>
+        <TextBlock x:Name="errorLabel" HorizontalAlignment="Center" Foreground="Red" Classes="errorLabel" Margin="0 30 0 0" IsVisible="False" ></TextBlock>
     </StackPanel>
 </Window>
