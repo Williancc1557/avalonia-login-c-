@@ -28,7 +28,9 @@
     >
         <StackPanel HorizontalAlignment="Center"
                     VerticalAlignment="Center"
-                    MinWidth="400" DockPanel.Dock="Left">
+                    MinWidth="400" 
+                    DockPanel.Dock="Left"
+                    MaxWidth="500">
             <TextBlock HorizontalAlignment="Center" Classes="Title" Margin="0 0 0 20">
                 Registrar
             </TextBlock>
@@ -57,9 +59,9 @@
                     MaxWidth="700"
                     MaxHeight="500">
                 <DataGrid.Columns>
-                    <DataGridTextColumn Header="First Name"  Binding="{Binding Name}"/>
-                    <DataGridTextColumn Header="Last Name" Binding="{Binding Email}" />
-                    <DataGridTextColumn Header="Password" Binding="{Binding Password}" />
+                    <DataGridTextColumn Header="First Name" MinWidth="200" Binding="{Binding Name}"/>
+                    <DataGridTextColumn Header="Last Name" MinWidth="200" Binding="{Binding Email}" />
+                    <DataGridTextColumn Header="Password" MinWidth="200" Binding="{Binding Password}" />
                 </DataGrid.Columns>
             </DataGrid>
         </StackPanel>
