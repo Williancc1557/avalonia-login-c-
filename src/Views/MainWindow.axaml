@@ -1,0 +1,39 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:vm="using:Assignment3.ViewModels"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+        x:Class="Assignment3.Views.MainWindow"
+        x:DataType="vm:MainWindowViewModel"
+        Icon="/Assets/avalonia-logo.ico"
+        Title="Assignment3">
+
+    <Design.DataContext>
+        <!-- This only sets the DataContext for the previewer in an IDE,
+             to set the actual DataContext for runtime, set the DataContext property in code (look at App.axaml.cs) -->
+        <vm:MainWindowViewModel/>
+    </Design.DataContext>
+    <Window.Styles>
+        <Style Selector="TextBlock.Title">
+            <Setter Property="FontSize" Value="24"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+        </Style>
+    </Window.Styles>
+    <StackPanel HorizontalAlignment="Center"
+                VerticalAlignment="Center"
+                MinWidth="400">
+        <TextBlock HorizontalAlignment="Center" Classes="Title" Margin="0 0 0 20">
+            Registrar
+        </TextBlock>
+        <TextBox x:Name="email" Watermark="Email" Margin="0 0 0 20"/>
+        <TextBox x:Name="password" Watermark="Password" Margin="0 0 0 20"/>
+        <Button Click="GreetingButtonClickHandler"
+                Width="200" VerticalContentAlignment="Center"
+                HorizontalAlignment="Center"
+                HorizontalContentAlignment="Center">
+                Sign up
+        </Button>
+        <TextBlock x:Name="successLabel" HorizontalAlignment="Center" Classes="successLabel" Margin="0 30 0 0" IsVisible="False" ></TextBlock>
+    </StackPanel>
+</Window>
