@@ -42,6 +42,7 @@ public partial class MainWindow : Window
     private void HandleError(string errorMessage, Exception exception) {
         errorLabel.Text = errorMessage;
         errorLabel.IsVisible = true;
+        successLabel.IsVisible = false;
         Console.WriteLine(exception.Message);
     }
 }
