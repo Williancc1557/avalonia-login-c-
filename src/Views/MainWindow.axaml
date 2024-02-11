@@ -48,10 +48,8 @@
             <TextBlock x:Name="errorLabel" HorizontalAlignment="Center" Foreground="Red" Classes="errorLabel" Margin="0 30 0 0" IsVisible="False" ></TextBlock>
         </StackPanel>
         <StackPanel HorizontalAlignment="Center" DockPanel.Dock="Right" MinWidth="300" MaxWidth="800">
-           <TextBlock HorizontalAlignment="Center">
-                Users count: <TextBlock HorizontalAlignment="Center" Foreground="Green" Text="{Binding Users.Count}" />
-            </TextBlock>
-            <DataGrid Margin="20" ItemsSource="{Binding Users}"
+            <TextBox MaxWidth="600" KeyUp="FilterTextUpdate" x:Name="filterByEmail" Watermark="Filter by email" />
+            <DataGrid Margin="20 8 20 20" ItemsSource="{Binding Users}"
                     IsReadOnly="True"
                     CanUserReorderColumns="True"
                     CanUserResizeColumns="True"
@@ -68,7 +66,9 @@
                     <DataGridTextColumn Header="Password" MinWidth="200" Binding="{Binding Password}" />
                 </DataGrid.Columns>
             </DataGrid>
-            <TextBox MaxWidth="600" KeyUp="FilterTextUpdate" x:Name="filterByEmail" Watermark="Filter by email" Margin="0 0 0 20"/>
+            <TextBlock HorizontalAlignment="Center">
+                Users count: <TextBlock HorizontalAlignment="Center" Foreground="Green" Text="{Binding Users.Count}" />
+            </TextBlock>
         </StackPanel>
     </DockPanel>
 </Window>
