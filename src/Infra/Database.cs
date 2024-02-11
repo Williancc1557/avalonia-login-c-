@@ -21,20 +21,21 @@ public class Database {
     }
 
     private void Validators(User user) {
+        string errorMessage = "";
         if (!Validator.ValidateEmail(user.Email)) {
-            string errorMessage = "email";
+            errorMessage = "email";
             ErrorStack.PushError(errorMessage);
         }
         if (!Validator.ValidateName(user.Surname)) {
-            string errorMessage = "name";
+            errorMessage = "name";
             ErrorStack.PushError(errorMessage);
         }
         if (!Validator.ValidateName(user.Name)) {
-            string errorMessage = "Isurname";
+            errorMessage = "Isurname";
             ErrorStack.PushError(errorMessage);
         }
 
-        throw new InvalidParameterError(ErrorStack.PopError());
+        if (!string.IsNullOrEmpty(errorMessage)) throw new InvalidParameterError(errorMessage);
     }
 
     public ObservableCollection<User> GetUsers() {

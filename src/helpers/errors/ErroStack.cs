@@ -20,7 +20,7 @@ public class ErrorStack
         else
         {
             var errorInfo = stack.Pop();
-            return $"[{errorInfo.Timestamp}] Error: {errorInfo.ErrorMessage}";
+            return $"[{errorInfo.Timestamp}] Invalid param error: {errorInfo.ErrorMessage}";
         }
     }
 

@@ -33,10 +33,8 @@ public partial class MainWindow : Window
             errorLabel.IsVisible = false;
 
             Clear();
-        } catch (InvalidNameError nameError) {
-            HandleError("The name is not valid", nameError);
-        } catch (InvalidEmailError emailError) {
-            HandleError("The email address is not valid", emailError);
+        } catch (Exception nameError) {
+            HandleError(ErrorStack.PopError(), nameError);
         }
     }
 
