@@ -1,4 +1,3 @@
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using CustomizedErrors;
 using UserAccount;
@@ -15,6 +14,10 @@ public class Database {
     public void SaveUser(User user) {
         Validators(user);
         users.Add(user);
+        MessageObserver messageObserver = new();
+        Subject subject = new();
+        subject.Attach(messageObserver);
+        subject.Notify($"User {user.Email} has been added.");
     }
 
     private void Validators(User user) {
