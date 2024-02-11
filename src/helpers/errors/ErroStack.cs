@@ -3,15 +3,15 @@ using System.Collections.Generic;
 
 public class ErrorStack
 {
-    private readonly Stack<ErrorInfo> stack = new();
+    private static readonly Stack<ErrorInfo> stack = new();
 
-    public void PushError(string errorMessage)
+    public static void PushError(string errorMessage)
     {
         var errorInfo = new ErrorInfo(errorMessage, DateTime.Now);
         stack.Push(errorInfo);
     }
 
-    public string PopError()
+    public static string PopError()
     {
         if (stack.Count == 0)
         {
@@ -24,21 +24,16 @@ public class ErrorStack
         }
     }
 
-    public string PeekErrors()
+    public static string PeekErrors()
     {
-        if (stack.Count == 0)
+        if (stack.Count == 0) return "No errors in the stack.";
+
+        string errors = "Errors in the stack:\n";
+        foreach (var errorInfo in stack)
         {
-            return "No errors in the stack.";
+            errors += $"[{errorInfo.Timestamp}] {errorInfo.ErrorMessage}\n";
         }
-        else
-        {
-            string errors = "Errors in the stack:\n";
-            foreach (var errorInfo in stack)
-            {
-                errors += $"[{errorInfo.Timestamp}] {errorInfo.ErrorMessage}\n";
-            }
-            return errors;
-        }
+        return errors;
     }
 
     private class ErrorInfo

@@ -21,14 +21,20 @@ public class Database {
     }
 
     private void Validators(User user) {
-        if (!Validator.ValidateEmail(user.Email))
-            throw new InvalidEmailError("Invalid email address");
+        if (!Validator.ValidateEmail(user.Email)) {
+            string errorMessage = "email";
+            ErrorStack.PushError(errorMessage);
+        }
+        if (!Validator.ValidateName(user.Surname)) {
+            string errorMessage = "name";
+            ErrorStack.PushError(errorMessage);
+        }
+        if (!Validator.ValidateName(user.Name)) {
+            string errorMessage = "Isurname";
+            ErrorStack.PushError(errorMessage);
+        }
 
-        if (!Validator.ValidateName(user.Surname))
-            throw new InvalidNameError("Invalid password");
-
-        if (!Validator.ValidateName(user.Name))
-            throw new InvalidNameError("Invalid name");
+        throw new InvalidParameterError(ErrorStack.PopError());
     }
 
     public ObservableCollection<User> GetUsers() {
