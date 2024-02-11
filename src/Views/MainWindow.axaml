@@ -36,7 +36,7 @@
             </TextBlock>
             <TextBox x:Name="name" Watermark="Name" Margin="0 0 0 20"/>
             <TextBox x:Name="email" Watermark="Email" Margin="0 0 0 20"/>
-            <TextBox PasswordChar="*" x:Name="password" Watermark="Password" Margin="0 0 0 20"/>
+            <TextBox x:Name="surname" Watermark="Surname" Margin="0 0 0 20"/>
             <Button Click="Handle"
                     HorizontalAlignment="Center"
 
@@ -63,7 +63,7 @@
                 <DataGrid.Columns>
                     <DataGridTextColumn x:Class="grid" Header="First Name" MinWidth="200" Binding="{Binding Name}"/>
                     <DataGridTextColumn Header="Last Name" MinWidth="200" Binding="{Binding Email}" />
-                    <DataGridTextColumn Header="Password" MinWidth="200" Binding="{Binding Password}" />
+                    <DataGridTextColumn Header="Surname" MinWidth="200" Binding="{Binding Surname}" />
                 </DataGrid.Columns>
             </DataGrid>
             <TextBlock HorizontalAlignment="Center">

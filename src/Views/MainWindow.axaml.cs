@@ -20,12 +20,12 @@ public partial class MainWindow : Window
         try {
             string? nameText = name.Text;
             string? emailText = email.Text;
-            string? passwordText = password.Text;
+            string? surnameText = surname.Text;
 
-            bool existsAllFields = string.IsNullOrEmpty(nameText) || string.IsNullOrEmpty(emailText) || string.IsNullOrEmpty(passwordText);
+            bool existsAllFields = string.IsNullOrEmpty(nameText) || string.IsNullOrEmpty(emailText) || string.IsNullOrEmpty(surnameText);
             if (existsAllFields) return;
 
-            User user = new(nameText!, emailText!, passwordText!);
+            User user = new(nameText!, emailText!, surnameText!);
             MainWindowViewModel.AddNewUser(user);
 
             successLabel.Text = $"Congratulations! You've successfully signed up. Welcome to our community {user.Name}";
@@ -37,8 +37,6 @@ public partial class MainWindow : Window
             HandleError("The name is not valid", nameError);
         } catch (InvalidEmailError emailError) {
             HandleError("The email address is not valid", emailError);
-        } catch (InvalidPasswordError passwordError) {
-            HandleError("The password is not valid", passwordError);
         }
     }
 
@@ -55,6 +53,6 @@ public partial class MainWindow : Window
     private void Clear() {
         name.Text = "";
         email.Text = "";
-        password.Text = "";
+        surname.Text = "";
     }
 }

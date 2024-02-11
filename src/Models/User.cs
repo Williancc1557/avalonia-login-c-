@@ -3,13 +3,13 @@ using System.Text;
 namespace UserAccount {
     public class User {
         public string Email {set; get;}
-        public string Password {set; get;}
+        public string Surname {set; get;}
         public string Name {set; get;}
 
 
-        public User(string name, string email, string password) {
+        public User(string name, string email, string surname) {
             Email = email;
-            Password = password;
+            Surname = surname;
             Name = name;
         }
 
@@ -19,7 +19,7 @@ namespace UserAccount {
 
             text.Append($"Email: {Email}");
             text.Append('\n');
-            text.Append($"Password: {Password}");
+            text.Append($"Surname: {Surname}");
 
             return text.ToString();
         }

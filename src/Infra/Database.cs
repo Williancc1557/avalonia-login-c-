@@ -24,10 +24,10 @@ public class Database {
         if (!Validator.ValidateEmail(user.Email))
             throw new InvalidEmailError("Invalid email address");
 
-        if (!Validator.ValidatePassword(user.Password))
-            throw new InvalidPasswordError("Invalid password");
+        if (!Validator.ValidateName(user.Surname))
+            throw new InvalidNameError("Invalid password");
 
-        if (!Validator.ValidateName(user.Password))
+        if (!Validator.ValidateName(user.Name))
             throw new InvalidNameError("Invalid name");
     }
 

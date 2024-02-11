@@ -8,19 +8,6 @@ public class Validator {
         return regex.IsMatch(email);
     }
 
-    public static bool ValidatePassword(string password) {
-        /*
-        At least 8 characters long.
-        Contains at least one letter ([A-Za-z]).
-        Contains at least one digit (\d).
-        Allows only letters and digits ([A-Za-z\d]).
-        */
-        string pattern = @"^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$";
-        Regex regex = new(pattern);
-
-        return regex.IsMatch(password);
-    }
-
     public static bool ValidateName(string name) {
         /*
         Allows alphanumeric characters (letters and digits), underscores, and hyphens.
