@@ -60,7 +60,7 @@
                     MaxWidth="700"
                     MaxHeight="500">
                 <DataGrid.Columns>
-                    <DataGridTextColumn Header="First Name" MinWidth="200" Binding="{Binding Name}"/>
+                    <DataGridTextColumn x:Class="grid" Header="First Name" MinWidth="200" Binding="{Binding Name}"/>
                     <DataGridTextColumn Header="Last Name" MinWidth="200" Binding="{Binding Email}" />
                     <DataGridTextColumn Header="Password" MinWidth="200" Binding="{Binding Password}" />
                 </DataGrid.Columns>

@@ -48,6 +48,6 @@ public partial class MainWindow : Window
     }
 
     private void FilterTextUpdate(object sender, KeyEventArgs e) {
-        Console.WriteLine(e);
+        MainWindowViewModel.FilterUser(filterByEmail.Text);
     }
 }
