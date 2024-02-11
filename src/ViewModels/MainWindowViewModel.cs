@@ -21,23 +21,37 @@ public class MainWindowViewModel : ViewModelBase
     }
 
     public static void FilterUser(string? textToFilter) {
-        if (string.IsNullOrEmpty(textToFilter)) {
+        if (IsNullOrEmptyText(textToFilter)) return;
+        CheckIfNotHaveUserToFilter();
+
+        List<User> filteredUsers = Users.Where(obj => obj.Email.Contains(textToFilter!)).ToList();
+
+        Users.Clear();
+        ImplementFilteredUsers(filteredUsers);
+    }
+
+    public static bool IsNullOrEmptyText(string? text) {
+        if (string.IsNullOrEmpty(text)) {
             Users.Clear();
             foreach (User user in UsersBeforeUpdate) {
                 Users.Add(user);
             }
-            return;
+
+            return true;
         }
 
+        return false;
+    }
+
+    public static void CheckIfNotHaveUserToFilter() {
         if (Users.Count == 0) {
             foreach (User user in UsersBeforeUpdate) {
                 Users.Add(user);
             }
         }
+    }
 
-        List<User> filteredUsers = Users.Where(obj => obj.Email.Contains(textToFilter!)).ToList();
-
-        Users.Clear();
+    public static void ImplementFilteredUsers(List<User> filteredUsers) {
         foreach (User user in filteredUsers) {
             Users.Add(user);
         }
