@@ -48,6 +48,9 @@
             <TextBlock x:Name="errorLabel" HorizontalAlignment="Center" Foreground="Red" Classes="errorLabel" Margin="0 30 0 0" IsVisible="False" ></TextBlock>
         </StackPanel>
         <StackPanel HorizontalAlignment="Center" DockPanel.Dock="Right" MinWidth="300" MaxWidth="800">
+           <TextBlock HorizontalAlignment="Center">
+                Users count: <TextBlock HorizontalAlignment="Center" Foreground="Green" Text="{Binding Users.Count}" />
+            </TextBlock>
             <DataGrid Margin="20" ItemsSource="{Binding Users}"
                     IsReadOnly="True"
                     CanUserReorderColumns="True"
