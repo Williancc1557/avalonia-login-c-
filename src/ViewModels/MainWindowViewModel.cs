@@ -21,10 +21,11 @@ public class MainWindowViewModel : ViewModelBase
     }
 
     public static void FilterUser(string? textToFilter) {
-        if (IsNullOrEmptyText(textToFilter)) return;
+        string textWithoutSpace = textToFilter!.Trim();
+        if (IsNullOrEmptyText(textWithoutSpace)) return;
         CheckIfNotHaveUserToFilter();
 
-        List<User> filteredUsers = Users.Where(obj => obj.Email.Contains(textToFilter!)).ToList();
+        List<User> filteredUsers = Users.Where(obj => obj.Email.Contains(textWithoutSpace!)).ToList();
 
         Users.Clear();
         ImplementFilteredUsers(filteredUsers);
