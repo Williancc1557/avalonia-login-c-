@@ -29,6 +29,12 @@ public class MainWindowViewModel : ViewModelBase
             return;
         }
 
+        if (Users.Count == 0) {
+            foreach (User user in UsersBeforeUpdate) {
+                Users.Add(user);
+            }
+        }
+
         List<User> filteredUsers = Users.Where(obj => obj.Email.Contains(textToFilter!)).ToList();
 
         Users.Clear();
