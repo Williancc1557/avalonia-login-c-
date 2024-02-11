@@ -35,8 +35,8 @@
                 Registrar
             </TextBlock>
             <TextBox x:Name="name" Watermark="Name" Margin="0 0 0 20"/>
-            <TextBox x:Name="email" Watermark="Email" Margin="0 0 0 20"/>
             <TextBox x:Name="surname" Watermark="Surname" Margin="0 0 0 20"/>
+            <TextBox x:Name="email" Watermark="Email" Margin="0 0 0 20"/>
             <Button Click="Handle"
                     HorizontalAlignment="Center"
 
