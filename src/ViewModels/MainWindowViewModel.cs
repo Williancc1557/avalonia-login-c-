@@ -12,7 +12,6 @@ public class MainWindowViewModel : ViewModelBase
 {
     public static ObservableCollection<User> Users { get; set;} = [];
     public static ObservableCollection<User> UsersBeforeUpdate { get; set;} = [];
-    public static bool isEditing;
 
     public static void AddNewUser(User user)
     {
