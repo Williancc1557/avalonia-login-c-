@@ -31,6 +31,8 @@ public partial class MainWindow : Window
             successLabel.Text = $"Congratulations! You've successfully signed up. Welcome to our community {user.Name}";
             successLabel.IsVisible = true;
             errorLabel.IsVisible = false;
+
+            Clear();
         } catch (InvalidNameError nameError) {
             HandleError("The name is not valid", nameError);
         } catch (InvalidEmailError emailError) {
@@ -44,10 +46,15 @@ public partial class MainWindow : Window
         errorLabel.Text = errorMessage;
         errorLabel.IsVisible = true;
         successLabel.IsVisible = false;
-        Console.WriteLine(exception.Message);
     }
 
     private void FilterTextUpdate(object sender, KeyEventArgs e) {
         MainWindowViewModel.FilterUser(filterByEmail.Text);
+    }
+
+    private void Clear() {
+        name.Text = "";
+        email.Text = "";
+        password.Text = "";
     }
 }
