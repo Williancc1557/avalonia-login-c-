@@ -26,11 +26,12 @@
         HorizontalAlignment="Center"
         VerticalAlignment="Center"
     >
-        <StackPanel HorizontalAlignment="Center"
-                    VerticalAlignment="Center"
-                    MinWidth="400"
-                    DockPanel.Dock="Left"
-                    MaxWidth="500">
+        <StackPanel
+            HorizontalAlignment="Center"
+            VerticalAlignment="Center"
+            MinWidth="400"
+            DockPanel.Dock="Left"
+            MaxWidth="500">
             <TextBlock HorizontalAlignment="Center" Classes="Title" Margin="0 0 0 20">
                 Registrar
             </TextBlock>
@@ -39,13 +40,25 @@
             <TextBox x:Name="email" Watermark="Email" Margin="0 0 0 20"/>
             <Button Click="Handle"
                     HorizontalAlignment="Center"
-
                     Padding="100 10 100 10" VerticalContentAlignment="Center"
                     >
                     Sign up
             </Button>
-            <TextBlock x:Name="successLabel" HorizontalAlignment="Center" Foreground="Green" Classes="successLabel" Margin="0 30 0 0" IsVisible="False" ></TextBlock>
-            <TextBlock x:Name="errorLabel" HorizontalAlignment="Center" Foreground="Red" Classes="errorLabel" Margin="0 30 0 0" IsVisible="False" ></TextBlock>
+            <TextBlock
+                x:Name="successLabel"
+                HorizontalAlignment="Center"
+                Foreground="Green"
+                Classes="successLabel"
+                Margin="0 30 0 0"
+                IsVisible="False" ></TextBlock>
+            <TextBlock
+                x:Name="errorLabel"
+                HorizontalAlignment="Center"
+                Foreground="Red"
+                Classes="errorLabel"
+                Margin="0 30 0 0"
+                IsVisible="False">
+            </TextBlock>
         </StackPanel>
         <StackPanel HorizontalAlignment="Center" DockPanel.Dock="Right" MinWidth="300" MaxWidth="800">
             <TextBox MaxWidth="600" KeyUp="FilterTextUpdate" x:Name="filterByEmail" Watermark="Filter by email" />
@@ -62,8 +75,8 @@
                     MaxHeight="500">
                 <DataGrid.Columns>
                     <DataGridTextColumn x:Class="grid" Header="First Name" MinWidth="200" Binding="{Binding Name}"/>
-                    <DataGridTextColumn Header="Last Name" MinWidth="200" Binding="{Binding Email}" />
                     <DataGridTextColumn Header="Surname" MinWidth="200" Binding="{Binding Surname}" />
+                    <DataGridTextColumn Header="Email" MinWidth="200" Binding="{Binding Email}" />
                 </DataGrid.Columns>
             </DataGrid>
             <TextBlock HorizontalAlignment="Center">
