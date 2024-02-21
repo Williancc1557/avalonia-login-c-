@@ -38,6 +38,10 @@ public partial class MainWindow : Window
         }
     }
 
+    public void ExportData(object sender, RoutedEventArgs e) {
+        MainWindowViewModel.ExportData();
+    }
+
     private void HandleError(string errorMessage, Exception exception) {
         errorLabel.Text = errorMessage;
         errorLabel.IsVisible = true;

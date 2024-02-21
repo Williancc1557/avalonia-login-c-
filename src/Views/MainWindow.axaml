@@ -89,7 +89,7 @@
                 <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center">
                     Users count: <TextBlock HorizontalAlignment="Center" Foreground="Green" Text="{Binding Users.Count}" />
                 </TextBlock>
-                <Button Click="Handle"
+                <Button Click="ExportData"
                         HorizontalAlignment="Center"
                         Padding="50 10 50 10" Margin="30 0 0 0" VerticalContentAlignment="Center"
                         >

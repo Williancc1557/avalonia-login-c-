@@ -1,9 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.IO;
 using System.Linq;
-using System.Reactive.Linq;
-using DynamicData;
+using System.Text.Json;
 using UserAccount;
 
 namespace Assignment3.ViewModels;
@@ -50,6 +49,14 @@ public class MainWindowViewModel : ViewModelBase
                 Users.Add(user);
             }
         }
+    }
+
+    public static void ExportData() {
+        List<User> usersToExport = Database.CreateInstance().GetUsers();
+
+        var json = JsonSerializer.Serialize(usersToExport);
+
+        File.WriteAllText("backups/backup.json", json);
     }
 
     public static void ImplementFilteredUsers(List<User> filteredUsers) {

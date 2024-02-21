@@ -1,10 +1,10 @@
-using System.Collections.ObjectModel;
+using System.Collections.Generic;
 using CustomizedErrors;
 using UserAccount;
 
 public class Database {
     private static Database? instance;
-    private readonly ObservableCollection<User> users = [];
+    private readonly List<User> users = [];
 
     public static Database CreateInstance() {
         instance ??= new Database();
@@ -38,7 +38,7 @@ public class Database {
         if (!string.IsNullOrEmpty(errorMessage)) throw new InvalidParameterError(errorMessage);
     }
 
-    public ObservableCollection<User> GetUsers() {
+    public List<User> GetUsers() {
         return users;
     }
 }
