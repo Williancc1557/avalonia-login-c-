@@ -79,9 +79,23 @@
                     <DataGridTextColumn Header="Email" MinWidth="200" Binding="{Binding Email}" />
                 </DataGrid.Columns>
             </DataGrid>
-            <TextBlock HorizontalAlignment="Center">
-                Users count: <TextBlock HorizontalAlignment="Center" Foreground="Green" Text="{Binding Users.Count}" />
-            </TextBlock>
+            <DockPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+                <Button Click="Handle"
+                        HorizontalAlignment="Center"
+                        Padding="50 10 50 10" Margin="0 0 30 0" VerticalContentAlignment="Center"
+                        >
+                        Import
+                </Button>
+                <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center">
+                    Users count: <TextBlock HorizontalAlignment="Center" Foreground="Green" Text="{Binding Users.Count}" />
+                </TextBlock>
+                <Button Click="Handle"
+                        HorizontalAlignment="Center"
+                        Padding="50 10 50 10" Margin="30 0 0 0" VerticalContentAlignment="Center"
+                        >
+                        Export
+                </Button>
+            </DockPanel>
         </StackPanel>
     </DockPanel>
 </Window>
