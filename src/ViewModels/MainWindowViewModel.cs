@@ -57,17 +57,23 @@ public class MainWindowViewModel : ViewModelBase
 
     public async static void ExportData(TopLevel topLevel) {
         try {
-            var options = new FolderPickerOpenOptions()
+            var options = new FilePickerSaveOptions()
             {
                 Title = "Selecionar pasta",
-                AllowMultiple = false
             };
-            var path = await topLevel.StorageProvider.OpenFolderPickerAsync(options);
+            var exportFile = await topLevel.StorageProvider.SaveFilePickerAsync(options);
             List<User> usersToExport = Database.CreateInstance().GetUsers();
 
-            var json = JsonSerializer.Serialize(usersToExport);
 
-            using var streamWriter = new StreamWriter($"{path[0].Path.AbsolutePath}/backup.json");
+            if (exportFile == null) {
+                Logger.Debug("null file");
+                return;
+            }
+
+            await using var stream = await exportFile.OpenWriteAsync();
+            using var streamWriter = new StreamWriter(stream);
+
+            var json = JsonSerializer.Serialize(usersToExport);
             streamWriter.Write(json);
         } catch (Exception err) {
             Console.WriteLine(err);
