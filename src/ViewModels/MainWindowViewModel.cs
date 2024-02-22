@@ -57,39 +57,41 @@ public class MainWindowViewModel : ViewModelBase
     }
 
     public static void ExportData() {
-        List<User> usersToExport = Database.CreateInstance().GetUsers();
+        try {
+            List<User> usersToExport = Database.CreateInstance().GetUsers();
 
-        var json = JsonSerializer.Serialize(usersToExport);
+            var json = JsonSerializer.Serialize(usersToExport);
 
-        using var streamWriter = new StreamWriter("backups/backup.json");
-        streamWriter.Write(json);
+            using var streamWriter = new StreamWriter("backups/backup.json");
+            streamWriter.Write(json);
+        } catch (Exception) {
+            Logger.Debug("export data failed");
+
+        }
     }
 
     public async static void ImportData(TopLevel topLevel) {
-        var options = new FilePickerOpenOptions
-        {
-            FileTypeFilter = [FilePickerFileTypes.All],
-            Title = "Selecionar arquivo JSON",
-            AllowMultiple = false
-        };
+        try {
+            var options = new FilePickerOpenOptions
+            {
+                FileTypeFilter = [FilePickerFileTypes.All],
+                Title = "Selecionar arquivo JSON",
+                AllowMultiple = false
+            };
 
-        var file = await topLevel?.StorageProvider.OpenFilePickerAsync(options)!;
-        await using var stream = await file[0].OpenReadAsync();
-        using var reader = new StreamReader(stream);
-        var content = await reader.ReadToEndAsync();
+            var file = await topLevel?.StorageProvider.OpenFilePickerAsync(options)!;
+            await using var stream = await file[0].OpenReadAsync();
+            using var reader = new StreamReader(stream);
+            var content = await reader.ReadToEndAsync();
 
-        List<User>? users = JsonSerializer.Deserialize<List<User>>(content);
+            List<User>? users = JsonSerializer.Deserialize<List<User>>(content) ?? throw new Exception();
 
-        if (users == null || users.Count < 1) {
-            Subject subject = new();
-            subject.Attach(messageObserver);
-            subject.Notify("Invalid file");
-            return;
-        }
-
-
-        foreach (User user in users) {
-            Users.Add(user);
+            foreach (User user in users) {
+                Users.Add(user);
+                Database.CreateInstance().SaveUser(user);
+            }
+        } catch (ArgumentOutOfRangeException) {
+            Logger.Debug("import data failed");
         }
     }
 
