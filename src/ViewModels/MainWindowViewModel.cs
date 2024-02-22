@@ -13,7 +13,6 @@ namespace Assignment3.ViewModels;
 
 public class MainWindowViewModel : ViewModelBase
 {
-    private static readonly MessageObserver messageObserver = new();
     public static ObservableCollection<User> Users { get; set;} = [];
     public static ObservableCollection<User> UsersBeforeUpdate { get; set;} = [];
 
