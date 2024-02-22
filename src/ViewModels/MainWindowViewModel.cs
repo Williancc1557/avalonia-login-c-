@@ -65,12 +65,12 @@ public class MainWindowViewModel : ViewModelBase
         streamWriter.Write(json);
     }
 
-    [System.Obsolete]
     public async static void ImportData(TopLevel topLevel) {
         var options = new FilePickerOpenOptions
         {
             FileTypeFilter = [FilePickerFileTypes.All],
-            Title = "Selecionar arquivo JSON"
+            Title = "Selecionar arquivo JSON",
+            AllowMultiple = false
         };
 
         var file = await topLevel?.StorageProvider.OpenFilePickerAsync(options)!;
@@ -80,7 +80,7 @@ public class MainWindowViewModel : ViewModelBase
 
         List<User>? users = JsonSerializer.Deserialize<List<User>>(content);
 
-        if (users == null || users.Count == 0) {
+        if (users == null || users.Count < 1) {
             Subject subject = new();
             subject.Attach(messageObserver);
             subject.Notify("Invalid file");
@@ -89,7 +89,6 @@ public class MainWindowViewModel : ViewModelBase
 
 
         foreach (User user in users) {
-            Console.WriteLine(user.Name);
             Users.Add(user);
         }
     }
