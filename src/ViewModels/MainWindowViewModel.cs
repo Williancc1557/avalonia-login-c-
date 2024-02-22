@@ -73,7 +73,6 @@ public class MainWindowViewModel : ViewModelBase
         } catch (Exception err) {
             Console.WriteLine(err);
             Logger.Debug("export data failed");
-
         }
     }
 
