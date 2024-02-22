@@ -1,5 +1,6 @@
 using System;
 using Assignment3.ViewModels;
+using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Input;
 using Avalonia.Interactivity;
@@ -10,6 +11,7 @@ namespace Assignment3.Views;
 
 public partial class MainWindow : Window
 {
+    private readonly MainWindowViewModel _viewModel;
     public MainWindow()
     {
         InitializeComponent();
@@ -40,6 +42,11 @@ public partial class MainWindow : Window
 
     public void ExportData(object sender, RoutedEventArgs e) {
         MainWindowViewModel.ExportData();
+    }
+
+    [Obsolete]
+    public void ImportData(object sender, RoutedEventArgs e) {
+        MainWindowViewModel.ImportData(GetTopLevel(this));
     }
 
     private void HandleError(string errorMessage, Exception exception) {
