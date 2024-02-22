@@ -91,12 +91,20 @@ public class MainWindowViewModel : ViewModelBase
 
             List<User>? users = JsonSerializer.Deserialize<List<User>>(content) ?? throw new Exception();
 
-            foreach (User user in users) {
+            AddListOfUsersIfNotExists(users);
+        } catch (ArgumentOutOfRangeException) {
+            Logger.Debug("import data failed");
+        }
+    }
+
+    private static void AddListOfUsersIfNotExists(List<User> users) {
+        foreach (User user in users) {
+            List<User> usersDatabase = Database.CreateInstance().GetUsers();
+            User? exitsUser = usersDatabase.Find(a => a.Email == user.Email);
+            if (exitsUser == null) {
                 Users.Add(user);
                 Database.CreateInstance().SaveUser(user);
             }
-        } catch (ArgumentOutOfRangeException) {
-            Logger.Debug("import data failed");
         }
     }
 
