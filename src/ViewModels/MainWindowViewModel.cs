@@ -56,15 +56,22 @@ public class MainWindowViewModel : ViewModelBase
         }
     }
 
-    public static void ExportData() {
+    public async static void ExportData(TopLevel topLevel) {
         try {
+            var options = new FolderPickerOpenOptions()
+            {
+                Title = "Selecionar pasta",
+                AllowMultiple = false
+            };
+            var path = await topLevel.StorageProvider.OpenFolderPickerAsync(options);
             List<User> usersToExport = Database.CreateInstance().GetUsers();
 
             var json = JsonSerializer.Serialize(usersToExport);
 
-            using var streamWriter = new StreamWriter("backups/backup.json");
+            using var streamWriter = new StreamWriter($"{path[0].Path.AbsolutePath}/backup.json");
             streamWriter.Write(json);
-        } catch (Exception) {
+        } catch (Exception err) {
+            Console.WriteLine(err);
             Logger.Debug("export data failed");
 
         }
@@ -79,7 +86,7 @@ public class MainWindowViewModel : ViewModelBase
                 AllowMultiple = false
             };
 
-            var file = await topLevel?.StorageProvider.OpenFilePickerAsync(options)!;
+            var file = await topLevel.StorageProvider.OpenFilePickerAsync(options);
             await using var stream = await file[0].OpenReadAsync();
             using var reader = new StreamReader(stream);
             var content = await reader.ReadToEndAsync();
